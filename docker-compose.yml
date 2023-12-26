@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+    postgres-master:
+        image: postgres
+        container_name: master-postgres
+        environment:
+            POSTGRES_PASSWORD: "123456789"
+        volumes:
+            - /home/ubuntu/pgdata:/var/lib/postgresql/data
+            - /home/ubuntu/master/postgresql.conf:/etc/postgresql/postgresql.conf
+            - /home/ubuntu/master/pg_hba.conf:/etc/postgresql/pg_hba.conf
+        ports:
+            - "5432:5432"
+        networks:
+            - mi-red
+
+    postgres-replica:
+        image: postgres
+        container_name: replica-postgres
+        environment:
+            POSTGRES_PASSWORD: "123456789"
+        volumes:
+            - /home/ubuntu/pgdata_replica:/var/lib/postgresql/data
+            - /home/ubuntu/replica/postgresql.conf:/etc/postgresql/postgresql.conf
+            - /home/ubuntu/replica/pg_hba.conf:/etc/postgresql/pg_hba.conf
+        ports:
+            - "5433:5432"
+        networks:
+            - mi-red
+        depends_on:
+            - postgres-master
+
+networks:
+    mi-red:
+        external: true
+
+volumes:
+    pgdata:
+    pgdata_replica:
