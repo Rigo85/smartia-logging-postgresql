@@ -1,29 +1,32 @@
-version: '3.8'
+version: '3.7'
 
 services:
     postgres-master:
-        image: postgres
-        container_name: master-postgres
+        image: postgres:16
+        container_name: postgres-master
         environment:
-            POSTGRES_PASSWORD: "123456789"
+            POSTGRES_PASSWORD: 123456789
         volumes:
             - /home/azureuser/pgdata:/var/lib/postgresql/data
-            - /home/azureuser/smartia-logging-postgresql/master/postgresql.conf:/etc/postgresql/postgresql.conf
-            - /home/azureuser/smartia-logging-postgresql/master/pg_hba.conf:/etc/postgresql/pg_hba.conf
+            - ./master/postgresql.conf:/custom-config/postgresql.conf
+            - ./master/pg_hba.conf:/custom-config/pg_hba.conf
+            - ./01_init.sh:/docker-entrypoint-initdb.d/01_init.sh
+            - ./00_init.sql:/docker-entrypoint-initdb.d/00_init.sql
         ports:
             - "5432:5432"
         networks:
             - mi-red
 
     postgres-replica:
-        image: postgres
-        container_name: replica-postgres
+        image: postgres:16
+        container_name: postgres-replica
         environment:
-            POSTGRES_PASSWORD: "123456789"
+            POSTGRES_PASSWORD: 123456789
         volumes:
             - /home/azureuser/pgdata_replica:/var/lib/postgresql/data
-            - /home/azureuser/smartia-logging-postgresql/replica/postgresql.conf:/etc/postgresql/postgresql.conf
-            - /home/azureuser/smartia-logging-postgresql/replica/pg_hba.conf:/etc/postgresql/pg_hba.conf
+            - ./replica/postgresql.conf:/custom-config/postgresql.conf
+            - ./replica/pg_hba.conf:/custom-config/pg_hba.conf
+            - ./01_init.sh:/docker-entrypoint-initdb.d/01_init.sh
         ports:
             - "5433:5432"
         networks:
@@ -38,3 +41,4 @@ networks:
 volumes:
     pgdata:
     pgdata_replica:
+
