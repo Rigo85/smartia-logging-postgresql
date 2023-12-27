@@ -7,9 +7,9 @@ services:
         environment:
             POSTGRES_PASSWORD: "123456789"
         volumes:
-            - /home/ubuntu/pgdata:/var/lib/postgresql/data
-            - /home/ubuntu/master/postgresql.conf:/etc/postgresql/postgresql.conf
-            - /home/ubuntu/master/pg_hba.conf:/etc/postgresql/pg_hba.conf
+            - /home/azureuser/pgdata:/var/lib/postgresql/data
+            - /home/azureuser/smartia-logging-postgresql/master/postgresql.conf:/etc/postgresql/postgresql.conf
+            - /home/azureuser/smartia-logging-postgresql/master/pg_hba.conf:/etc/postgresql/pg_hba.conf
         ports:
             - "5432:5432"
         networks:
@@ -21,9 +21,9 @@ services:
         environment:
             POSTGRES_PASSWORD: "123456789"
         volumes:
-            - /home/ubuntu/pgdata_replica:/var/lib/postgresql/data
-            - /home/ubuntu/replica/postgresql.conf:/etc/postgresql/postgresql.conf
-            - /home/ubuntu/replica/pg_hba.conf:/etc/postgresql/pg_hba.conf
+            - /home/azureuser/pgdata_replica:/var/lib/postgresql/data
+            - /home/azureuser/smartia-logging-postgresql/replica/postgresql.conf:/etc/postgresql/postgresql.conf
+            - /home/azureuser/smartia-logging-postgresql/replica/pg_hba.conf:/etc/postgresql/pg_hba.conf
         ports:
             - "5433:5432"
         networks:

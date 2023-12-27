@@ -1,9 +1,13 @@
 
 
 # Pasos para levantar el maestro/réplica en PostgreSQl.
-
+- **Instalar docker**: `https://docs.docker.com/engine/install/ubuntu/`
 - **Crear red**: `docker network create --subnet=172.18.0.0/16 mi-red`
 - **Asegurar que existan**: `$HOME/pgdata`, `$HOME/pgdata_replica`, `$HOME/[master|replica]/postgresql.conf`,`$HOME/[master|replica]/pg_hba.conf`.
+  - ```bash
+    mkdir $HOME/pgdata
+    mkdir $HOME/pgdata_replica
+    ```
 - **Levantar DB**: `docker compose up`. 
 
 # Configuración para limitar el uso de los recursos.
