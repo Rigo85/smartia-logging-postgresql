@@ -22,7 +22,7 @@
   - ```bash
     pg_basebackup -h localhost -D ./pgdata_replica -U replicator -P -v -R --slot=replication_slot
     ```
-  - Instalar vim en *postgres-replica*, en */var/lib/postgresql/data/postgresql.auto.conf*, actualizar **host** en *primary_conninfo*.
+  - vim $HOME/pgdata_replica/postgresql.auto.conf, actualizar **host** en *primary_conninfo*. 
 - **Iniciar el servidor réplica**: `docker compose up -d postgres-replica`
 
 
