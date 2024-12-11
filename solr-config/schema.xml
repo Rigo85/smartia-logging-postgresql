@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema name="smartia_logs_schema" version="1.6">
+
+    <!-- Campos requeridos de Solr -->
+    <uniqueKey>id</uniqueKey>
+    <fieldType name="string" class="solr.StrField" sortMissingLast="true" docValues="true" />
+
+    <!-- Tipo de campo para texto general analizado, suitable para full text -->
+    <fieldType name="text_general" class="solr.TextField" positionIncrementGap="100">
+        <analyzer type="index">
+            <tokenizer class="solr.StandardTokenizerFactory"/>
+            <filter class="solr.LowerCaseFilterFactory"/>
+        </analyzer>
+        <analyzer type="query">
+            <tokenizer class="solr.StandardTokenizerFactory"/>
+            <filter class="solr.LowerCaseFilterFactory"/>
+        </analyzer>
+    </fieldType>
+
+    <!-- Tipo para fechas con solr.DateField (Solr usa formato ISO 8601 UTC) -->
+    <fieldType name="pdate" class="solr.TrieDateField" sortMissingLast="true" docValues="true"/>
+
+    <!-- Definición de campos -->
+    <field name="id" type="string" indexed="true" stored="true" required="true"/>
+
+    <field name="timestamp" type="pdate" indexed="true" stored="true"/>
+
+    <field name="data" type="text_general" indexed="true" stored="true"/>
+    <field name="appname" type="text_general" indexed="true" stored="true"/>
+
+    <field name="source" type="string" indexed="true" stored="true"/>
+    <field name="hostname" type="string" indexed="true" stored="true"/>
+
+    <!-- Campo de copia opcional: si quieres buscar en todos a la vez -->
+    <!-- <copyField source="data" dest="_text_"/> -->
+</schema>

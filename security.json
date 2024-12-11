@@ -1,0 +1,16 @@
+{
+	"authentication":{
+		"blockUnknown": true,
+		"class":"solr.BasicAuthPlugin",
+		"credentials":{
+			"solr":"$2b$10$N2V1Xm/f7vT/GhjsK7m0cOOra6RvJmRIev.9AHydMzXpzzrMnszP2"
+		}
+	},
+	"authorization":{
+		"class":"solr.RuleBasedAuthorizationPlugin",
+		"user-role":{
+			"solr":"admin"
+		},
+		"permissions":[{"name":"security-edit","role":"admin"}]
+	}
+}

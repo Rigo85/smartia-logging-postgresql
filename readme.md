@@ -1,14 +1,13 @@
 
-
-# Pasos para levantar el maestro/réplica en PostgreSQl.
+# Pasos para levantar PostgreSQl + Solr. 
 - **Instalar docker**: `https://docs.docker.com/engine/install/ubuntu/`
   - `sudo usermod -aG docker azureuser`
   - `newgrp docker`
 - **Crear red**: `docker network create --subnet=172.18.0.0/16 mi-red`
-- **Asegurar que existan**: `$HOME/pgdata`, `$HOME/pgdata_replica`.
+- **Asegurar que existan**: `$HOME/pgdata`, `$HOME/solrdata`.
   - ```bash
     mkdir $HOME/pgdata
-    mkdir $HOME/pgdata_replica
+    mkdir $HOME/solrdata
     ```
 - **Iniciar el servidor maestro**: `docker compose up -d postgres-master`
   - Verificar que el servidor maestro esté funcionando correctamente.
@@ -18,13 +17,9 @@
   sudo apt install postgresql-client-common
   sudo apt install postgresql-client-16
   ```
-- **Crear un backup del servidor maestro desde el host**:
-  - ```bash
-    pg_basebackup -h localhost -D ./pgdata_replica -U replicator -P -v -R --slot=replication_slot
-    ```
-  - vim $HOME/pgdata_replica/postgresql.auto.conf, actualizar **host** en *primary_conninfo*. 
-- **Iniciar el servidor réplica**: `docker compose up -d postgres-replica`
-
+- **Iniciar el servidor solr**: `docker compose up -d mi-solr`
+  - dentro del container se puede crear una nueva contraseña: `bin/solr auth enable -type basic -credentials solr:tu_password -solrIncludeFile solr.in.sh`
+  - reiniciar mi-solr.
 
 # Configuración para limitar el uso de los recursos(por revisar).
 Para limitar el uso de CPU y memoria de los contenedores en Docker, puedes utilizar las opciones de configuración de recursos al ejecutar tus contenedores con docker run o dentro de tu archivo docker-compose.yml. Estas configuraciones permiten asignar una cantidad máxima de memoria y CPU que cada contenedor puede utilizar, ayudando a evitar que un servicio acapare la mayoría de los recursos del sistema y afecte el rendimiento de los demás.
