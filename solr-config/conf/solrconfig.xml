@@ -21,6 +21,12 @@
         <int name="autoSoftCommitMaxTime">3000</int>
     </updateHandler>
 
+    <!-- Definición de la cadena de procesadores de actualización por defecto -->
+    <updateRequestProcessorChain name="default">
+        <processor class="solr.LogUpdateProcessorFactory"/>
+        <processor class="solr.RunUpdateProcessorFactory"/>
+    </updateRequestProcessorChain>
+
     <!-- Request Handler básico para búsquedas -->
     <requestHandler name="/select" class="solr.SearchHandler">
         <lst name="defaults">
