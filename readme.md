@@ -18,9 +18,10 @@
   sudo apt install postgresql-client-16
   ```
 - **Iniciar el servidor solr**: `docker compose up -d mi-solr`
-  - dentro del container se puede crear una nueva contraseña: `bin/solr auth enable -type basic -credentials solr:tu_password -solrIncludeFile solr.in.sh`
+  - Entrar al contenedor: `docker exec -ti solr /bin/bash`
+  - Crear una nueva contraseña(*revisar*): `bin/solr auth enable -type basic -credentials solr:tu_password -solrIncludeFile solr.in.sh`
   - reiniciar mi-solr.
-
+  
 # Configuración para limitar el uso de los recursos(por revisar).
 Para limitar el uso de CPU y memoria de los contenedores en Docker, puedes utilizar las opciones de configuración de recursos al ejecutar tus contenedores con docker run o dentro de tu archivo docker-compose.yml. Estas configuraciones permiten asignar una cantidad máxima de memoria y CPU que cada contenedor puede utilizar, ayudando a evitar que un servicio acapare la mayoría de los recursos del sistema y afecte el rendimiento de los demás.
 ```bash
