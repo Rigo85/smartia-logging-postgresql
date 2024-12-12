@@ -30,7 +30,7 @@ services:
             -  ./solr-config:/var/solr/data/smartia_logs_core/conf
             -  ./security.json:/var/solr/data/security.json
         environment:
-            - JAVA_OPTS=-Xms4g -Xmx4g -XX:+UseG1GC
+            - SOLR_HEAP=4g
 
 networks:
     mi-red:
