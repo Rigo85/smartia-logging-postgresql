@@ -29,6 +29,8 @@ services:
             -  /home/azureuser/solrdata:/var/solr/data
             -  ./solr-config:/var/solr/data/smartia_logs_core/conf
             -  ./security.json:/var/solr/data/security.json
+        environment:
+            - JAVA_OPTS=-Xms4g -Xmx4g -XX:+UseG1GC
 
 networks:
     mi-red:
