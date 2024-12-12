@@ -21,13 +21,14 @@ services:
         command:
             - solr-precreate
             - smartia_logs_core
+            - mi_configset
         ports:
             - "8983:8983"
         networks:
             - mi-red
         volumes:
             -  /home/azureuser/solrdata:/var/solr/data
-            -  ./solr-config:/var/solr/data/smartia_logs_core/conf
+            - ./solr-config:/opt/solr/server/solr/configsets/mi_configset
             -  ./security.json:/var/solr/data/security.json
         environment:
             - SOLR_HEAP=4g
