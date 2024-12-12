@@ -18,7 +18,7 @@
     </fieldType>
 
     <!-- Tipo para fechas con solr.DateField (Solr usa formato ISO 8601 UTC) -->
-    <fieldType name="pdate" class="solr.TrieDateField" sortMissingLast="true" docValues="true"/>
+    <fieldType name="pdate" class="solr.DatePointField" sortMissingLast="true" docValues="true"/>
 
     <!-- Definición de campos -->
     <field name="id" type="string" indexed="true" stored="true" required="true"/>

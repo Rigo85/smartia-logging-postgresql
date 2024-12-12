@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+    <!-- Versión de Lucene/solrMatchVersion -->
+    <luceneMatchVersion>9.0.0</luceneMatchVersion>
+
+    <!-- Ruta del directorio de datos -->
+    <dataDir>${solr.data.dir:}</dataDir>
+
+    <!-- Directorio de almacenamiento: NRTCaching es un buen punto de partida -->
+    <directoryFactory name="DirectoryFactory" class="solr.NRTCachingDirectoryFactory">
+        <str name="maxMergeSizeMB">4</str>
+        <str name="maxCachedMB">48</str>
+    </directoryFactory>
+
+    <!-- Definir la fábrica de esquemas. ClassicIndexSchemaFactory para usar schema.xml -->
+    <schemaFactory class="ClassicIndexSchemaFactory"/>
+
+    <!-- Manejador de actualizaciones por defecto -->
+    <updateHandler class="solr.DirectUpdateHandler2">
+        <int name="autoCommitMaxTime">15000</int> <!-- Opcional: autoCommit -->
+        <int name="autoSoftCommitMaxTime">3000</int>
+    </updateHandler>
+
+    <!-- Request Handler básico para búsquedas -->
+    <requestHandler name="/select" class="solr.SearchHandler">
+        <lst name="defaults">
+            <str name="echoParams">explicit</str>
+            <int name="rows">10</int>
+        </lst>
+    </requestHandler>
+
+    <!-- Request Handler para actualizaciones JSON, CSV, XML (opcional) -->
+    <requestHandler name="/update" class="solr.UpdateRequestHandler">
+        <lst name="defaults">
+            <str name="update.chain">default</str>
+        </lst>
+    </requestHandler>
+
+</config>
