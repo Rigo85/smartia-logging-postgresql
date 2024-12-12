@@ -21,7 +21,7 @@ services:
         command:
             - solr-precreate
             - smartia_logs_core
-            - /opt/solr/server/solr/configsets/mi_configset
+            - mi_configset
         ports:
             - "8983:8983"
         networks:
