@@ -26,9 +26,9 @@
     <field name="timestamp" type="pdate" indexed="true" stored="true"/>
 
     <field name="data" type="text_general" indexed="true" stored="true"/>
-    <field name="appname" type="text_general" indexed="true" stored="true"/>
-    <field name="hostname" type="text_general" indexed="true" stored="true"/>
 
+    <field name="appname" type="string" indexed="true" stored="true"/>
+    <field name="hostname" type="string" indexed="true" stored="true"/>
     <field name="source" type="string" indexed="true" stored="true"/>
 
     <!-- Campo de copia opcional: si quieres buscar en todos a la vez -->
