@@ -32,7 +32,7 @@ services:
             - ./solr-config:/opt/solr/server/solr/configsets/mi_configset
             - ./security.json:/var/solr/data/security.json
         environment:
-            - SOLR_HEAP=4g
+            - SOLR_HEAP=3g
 
 networks:
     mi-red:
