@@ -17,7 +17,8 @@
   sudo apt install postgresql-client-common
   sudo apt install postgresql-client-16
   ```
-- **Iniciar el servidor solr**: 
+- **Iniciar el servidor solr**:
+    - `sudo chown -R 8983:8983 /home/azureuser/solrdata`
     - `sudo chmod -R 755 solr-config/conf`
     - `sudo chmod 644 solr-config/conf/schema.xml`
     - `sudo chmod 644 solr-config/conf/solrconfig.xml`
