@@ -19,10 +19,6 @@
   ```
 - **Iniciar el servidor solr**:
     - `sudo chown -R 8983:8983 /home/azureuser/solrdata`
-    - `sudo chmod -R 755 solr-config/conf`
-    - `sudo chmod 644 solr-config/conf/schema.xml`
-    - `sudo chmod 644 solr-config/conf/solrconfig.xml`
-    - `sudo chown -R 8983:8983 solr-config/conf`
     - `docker compose up -d mi-solr`
     - Iniciar sesión:
         - usuario: *solr*.
