@@ -17,6 +17,13 @@
         </analyzer>
     </fieldType>
 
+    <fieldType name="large_exact" class="solr.TextField" positionIncrementGap="100">
+        <analyzer>
+            <tokenizer class="solr.KeywordTokenizerFactory"/>
+            <filter class="solr.LowerCaseFilterFactory"/>
+        </analyzer>
+    </fieldType>
+
     <!-- Tipo para fechas con solr.DateField (Solr usa formato ISO 8601 UTC) -->
     <fieldType name="pdate" class="solr.DatePointField" sortMissingLast="true" docValues="true"/>
 
@@ -27,7 +34,7 @@
 
     <field name="data" type="text_general" indexed="true" stored="true"/>
 
-    <field name="data_exact" type="string" indexed="true" stored="true"/>
+    <field name="data_exact" type="large_exact" indexed="true" stored="true" />
     <field name="appname" type="string" indexed="true" stored="true"/>
     <field name="hostname" type="string" indexed="true" stored="true"/>
     <field name="source" type="string" indexed="true" stored="true"/>
