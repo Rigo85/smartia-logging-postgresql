@@ -3,7 +3,7 @@
 
     <!-- Campos requeridos de Solr -->
     <uniqueKey>id</uniqueKey>
-    <fieldType name="string" class="solr.StrField" sortMissingLast="true" docValues="true" />
+    <fieldType name="string" class="solr.StrField" sortMissingLast="true" docValues="true"/>
 
     <!-- Tipo de campo para texto general analizado, suitable para full text -->
     <fieldType name="text_general" class="solr.TextField" positionIncrementGap="100">
@@ -13,13 +13,6 @@
         </analyzer>
         <analyzer type="query">
             <tokenizer class="solr.StandardTokenizerFactory"/>
-            <filter class="solr.LowerCaseFilterFactory"/>
-        </analyzer>
-    </fieldType>
-
-    <fieldType name="large_exact" class="solr.TextField" positionIncrementGap="100">
-        <analyzer>
-            <tokenizer class="solr.KeywordTokenizerFactory"/>
             <filter class="solr.LowerCaseFilterFactory"/>
         </analyzer>
     </fieldType>
@@ -34,7 +27,8 @@
 
     <field name="data" type="text_general" indexed="true" stored="true"/>
 
-    <field name="data_exact" type="large_exact" indexed="true" stored="true" />
+    <field name="group_id" type="string" indexed="true" stored="true" multiValued="false"/>
+    <field name="data_exact" type="string" indexed="true" stored="true"/>
     <field name="appname" type="string" indexed="true" stored="true"/>
     <field name="hostname" type="string" indexed="true" stored="true"/>
     <field name="source" type="string" indexed="true" stored="true"/>
