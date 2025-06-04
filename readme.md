@@ -19,7 +19,7 @@
   ```
 - **Iniciar el servidor solr**:
     - `sudo chown -R 8983:8983 /home/azureuser/solrdata`
-    - `docker compose up -d mi-solr`
+    - `docker compose up -d solr`
     - Iniciar sesión:
         - usuario: *solr*.
         - contraseña: *SolrRocks*.
@@ -28,7 +28,7 @@
         docker exec -u 0 -ti solr /bin/bash
         chown -R solr:solr /var/solr/data/security.json
       ```
-    - Luego cambiar la contraseña.
+    - Luego cambiar la contraseña(editar manualmente el archivo `/var/solr/data/security.json`).
 
 # Configuración para limitar el uso de los recursos(por revisar).
 

@@ -33,8 +33,8 @@ services:
             - ./security.json:/var/solr/data/security.json
         environment:
             - SOLR_HEAP=3g
-        mem_limit: 5g
-        memswap_limit: 5g
+#        mem_limit: 5g
+#        memswap_limit: 5g
 
 networks:
     mi-red:
