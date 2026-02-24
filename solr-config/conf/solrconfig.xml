@@ -32,6 +32,14 @@
         <lst name="defaults">
             <str name="echoParams">explicit</str>
             <int name="rows">10</int>
+            <!--
+                allowLeadingWildcard: Solr 9 lo habilita por defecto en SolrQueryParser,
+                pero se declara explícitamente para evitar regresiones en upgrades futuros.
+                Costo: leading wildcards (*error, *error*) requieren scan completo del
+                diccionario de términos. Aceptable para uso interactivo; evitar en
+                queries automatizadas de alta frecuencia.
+            -->
+            <bool name="allowLeadingWildcard">true</bool>
         </lst>
     </requestHandler>
 

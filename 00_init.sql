@@ -18,3 +18,4 @@ CREATE INDEX logs_timestamp_idx ON smartia_logs (timestamp);
 CREATE INDEX logs_source_idx ON smartia_logs (source);
 CREATE INDEX logs_hostname_idx ON smartia_logs (hostname);
 CREATE INDEX logs_appname_idx ON smartia_logs (appname);
+CREATE INDEX logs_isindexed_pending_idx ON smartia_logs (id) WHERE isindexed = false;
